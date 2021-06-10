@@ -21,13 +21,13 @@ export default function SignUp() {
     const [confirmPassword, setConfirmPassword] = useState("")
     const [email, setEmail] = useState("")
     const [image, setImage] = useState("")
-    const [loading, setLoading] = useState(false)
+    const [ setLoading] = useState(false)
    
 
     let classes = useStyles()
     const signUpUrl = 'http://localhost:3300/auth/signup'
 
-    let submitForm = async (e) => {
+    let submitForm = async () => {
         setLoading(true)
         let formData= new FormData()
         formData.append("name", name)
@@ -41,7 +41,7 @@ export default function SignUp() {
         })
 
         if (response.status !== 201){
-            console.log(await response.text)
+            // console.log(await response.text)
             setLoading(false)
             return
         }

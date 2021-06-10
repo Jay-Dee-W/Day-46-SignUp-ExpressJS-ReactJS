@@ -23,7 +23,7 @@ export default function BooksList() {
     let [loading, setLoading] = useState(true)
     const [books, setBooks] = useState([])
     const [openDialog, setOpenDialog] = useState(false)
-    const [selectedBook, setSelectedBook] = useState(null)
+    // const [selectedBook, setSelectedBook] = useState(null)
 
     const handleClickOpen = () => {
         setOpenDialog(true)
@@ -108,7 +108,7 @@ function ConfirmDialog({ open, book, handleClose }) {
             setDeleting(false)
             setError("book was not deleted, server response" + status)
         }
-               let result = await response.json()
+            //    let result = await response.json()
              }
         return (
             <Dialog
