@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
 
 }))
 
-export default function BooksList() {
+export default function BooksList({token}) {
     const classes = useStyles()
     let [loading, setLoading] = useState(true)
     const [books, setBooks] = useState([])
@@ -33,17 +33,23 @@ export default function BooksList() {
         setOpenDialog(false)
     }
 
-    const url = 'http://localhost:3300/books'
-
+    const url =  'http://localhost:3300/books' 
     let getBooks = async () => {
-        let response = await fetch(url)
+        let response = await fetch(url ,  {
+            "method": "GET",
+            "headers": {
+              "Authorization": `Bearer ${token.access_token}`
+            }
+        })
         let data = await response.json()
         console.log(data)
         setBooks(data)
         setLoading(false)
+
     }
     useEffect(() => {
         getBooks()
+        // eslint-disable-next-line 
     }, [])
 
     return (
